@@ -1,7 +1,10 @@
 package org.dxc.ngoi.order.process;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.stereotype.Component;
 
+@Component
 public class ProcessXCBLOrder {
 	
 	@Autowired
@@ -20,7 +23,7 @@ public class ProcessXCBLOrder {
 		orderMappingRequest.setTargetFormat("GSXML");
 		orderMappingRequest.setOrderDoc(xcblOrder);
 		OrderMappingResponse orderMappingResponse = orderMappingServiceClient.mapOrder(orderMappingRequest);
-		if(orderMappingResponse.statusCode.equals("200") {
+		if(orderMappingResponse.statusCode.equals("200")) {
 		
 			ValidateOrderRequest validateOrderRequest = new ValidateOrderRequest();
 			validateOrderRequest.setInputDoc(orderMappingResponse.getOutputDoc());
