@@ -26,12 +26,12 @@ public class XCBLOrderConsumer {
     @KafkaListener(topics = "${xcblorder.topic}", groupId = "${spring.kafka.consumer.group-id}")
     public void consume(String message) throws IOException {
         logger.info(String.format("#### -> Consumed message -> %s", message));
-		/*
-		 * TransactionLog transactionLog = new TransactionLog();
-		 * transactionLog.setRequestMsg(message);
-		 * transactionLog.setReceivedDate(getFormatedDate("yyyy-MM-dd HH:mm:ss"));
-		 * transactionDataServiceClient.addNewTransactionLog(transactionLog);
-		 */    
+		
+		  TransactionLog transactionLog = new TransactionLog();
+		  transactionLog.setRequestMsg(message);
+		  transactionLog.setReceivedDate(getFormatedDate("yyyy-MM-dd HH:mm:ss"));
+		  transactionDataServiceClient.addNewTransactionLog(transactionLog);
+		     
         processXCBLOrder.processOrder(message);
         
         
