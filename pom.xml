@@ -11,6 +11,7 @@
 	<groupId>org.dxc.ngoi.order.process</groupId>
 	<artifactId>ProcessXCBLOrder</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
+	<packaging>jar</packaging>
 	<name>ProcessXCBLOrder</name>
 	<description>Service which processes XCBLOrder</description>
 
