@@ -2,7 +2,7 @@ package org.dxc.ngoi.order.process;
 
 import java.io.FileOutputStream;
 
-import org.dxc.ngoi.order.receiver.ReceiveXcblOrderApplication;
+
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
