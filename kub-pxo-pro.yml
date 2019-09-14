@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: processxcblorder
-        image: mkadocker/processxcblorder
+        image: mkadocker/processxcblorder:BUILD_ID_PLACEHOLDER
         imagePullPolicy: Always
         ports:
         - containerPort: 8084
