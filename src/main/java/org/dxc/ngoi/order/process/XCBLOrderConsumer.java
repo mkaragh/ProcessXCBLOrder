@@ -8,6 +8,8 @@ import org.springframework.kafka.annotation.KafkaListener;
 import org.springframework.stereotype.Service;
 
 import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 @Service
 public class XCBLOrderConsumer {
@@ -24,13 +26,20 @@ public class XCBLOrderConsumer {
     @KafkaListener(topics = "${xcblorder.topic}", groupId = "${spring.kafka.consumer.group-id}")
     public void consume(String message) throws IOException {
         logger.info(String.format("#### -> Consumed message -> %s", message));
-        TransactionLog transactionLog = new TransactionLog();
-        transactionLog.setRequestMsg(message);
-        transactionLog.setReceivedDate("2019-03-22 16:06:40");
-        transactionDataServiceClient.addNewTransactionLog(transactionLog);
-        
+		/*
+		 * TransactionLog transactionLog = new TransactionLog();
+		 * transactionLog.setRequestMsg(message);
+		 * transactionLog.setReceivedDate(getFormatedDate("yyyy-MM-dd HH:mm:ss"));
+		 * transactionDataServiceClient.addNewTransactionLog(transactionLog);
+		 */    
         processXCBLOrder.processOrder(message);
         
         
     }
+    
+    private String getFormatedDate(String pattern) {
+		SimpleDateFormat simpleDateFormat = new SimpleDateFormat(pattern);
+		return simpleDateFormat.format(new Date());
+			
+	}	
 }
